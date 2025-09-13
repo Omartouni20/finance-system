@@ -17,10 +17,11 @@ export default function Login() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post(
-        `${process.env.REACT_APP_API_URL}/auth/login`,
-        { email, password }
-      );
+const res = await axios.post(
+  `${import.meta.env.VITE_API_URL}/auth/login`,
+  { email, password }
+);
+
 
       // حفظ التوكن والدور والاسم (لو متاح)
       localStorage.setItem("token", res.data.token);
