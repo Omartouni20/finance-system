@@ -17,7 +17,10 @@ export default function Login() {
     setLoading(true);
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/login`,
+        { email, password }
+      );
 
       // حفظ التوكن والدور والاسم (لو متاح)
       localStorage.setItem("token", res.data.token);
@@ -86,7 +89,11 @@ export default function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
-              <button type="button" onClick={() => setShowPass((s) => !s)} className="text-gray-500 hover:text-gray-700">
+              <button
+                type="button"
+                onClick={() => setShowPass((s) => !s)}
+                className="text-gray-500 hover:text-gray-700"
+              >
                 {showPass ? <EyeOff size={16} /> : <Eye size={16} />}
               </button>
             </div>
