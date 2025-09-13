@@ -22,14 +22,13 @@ Chart.register(ArcElement, BarElement, CategoryScale, LinearScale, ChartTooltip,
 export default function AccountantDashboard() {
   // ================= 1) API =================
   const token = localStorage.getItem("token");
-  const api = useMemo(
-    () =>
-      axios.create({
-        baseURL: "http://localhost:5000",
-        headers: { Authorization: `Bearer ${token}` },
-      }),
-    [token]
-  );
+const api = useMemo(() =>
+  axios.create({
+    baseURL: import.meta.env.VITE_API_URL,
+    headers: { Authorization: `Bearer ${token}` },
+  }), [token]
+);
+
   const API_BASE = api.defaults.baseURL?.replace(/\/+$/, "") || "";
 
   // ================= 2) حالات عامة =================

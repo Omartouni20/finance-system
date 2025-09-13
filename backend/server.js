@@ -26,9 +26,14 @@ app.use("/api/reports", require("./routes/reportRoutes"));
 app.use("/api/report-templates", require("./routes/templateRoutes"));
 app.use("/api/review", require("./routes/reviewRoutes"));
 
-// ✅ Route للتأكيد
+// ✅ Route للتأكيد على السيرفر
 app.get("/", (req, res) => {
   res.send("🚀 Finance System is running successfully on tahseelaty.al-hawas-eg.cloud!");
+});
+
+// ✅ Route test سريع للـ Auth
+app.get("/api/auth/test", (req, res) => {
+  res.json({ message: "✅ Auth API is reachable!" });
 });
 
 // 🟡 Start Server

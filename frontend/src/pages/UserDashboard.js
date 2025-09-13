@@ -48,7 +48,10 @@ export default function UserDashboard() {
 
   // ---------------- إعدادات API ----------------
   const token = localStorage.getItem("token");
-  const api = axios.create({ baseURL: "http://localhost:5000", headers: { Authorization: `Bearer ${token}` } });
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
+  headers: { Authorization: `Bearer ${token}` },
+});
 
   // ---------------- Navbar ----------------
   const meName = localStorage.getItem("userName") || "مستخدم";
